@@ -83,7 +83,7 @@ export const TrashBox = () => {
       <div className="mt-2 px-1 pb-1">
         {filteredDocuments?.length === 0 && (
           <p className="pb-2 text-center text-xs text-muted-foreground">
-            No documents found.
+            No se encontraron asignaturas eliminadas.
           </p>
         )}
         {filteredDocuments?.map((document) => (
