@@ -54,11 +54,11 @@ export const Menu = ({ documentId }: MenuProps) => {
       >
         <DropdownMenuItem onClick={onArchive}>
           <Trash className="mr-2 h-4 w-4" />
-          Delete
+          Eliminar
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <div className="p-2 text-xs text-muted-foreground">
-          Last edited by {user?.fullName}
+          Editado por última vez por {user?.fullName}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>
