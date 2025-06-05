@@ -30,6 +30,7 @@ import { TrashBox } from "./TrashBox";
 import { useSearch } from "@/hooks/useSearch";
 import { useSettings } from "@/hooks/useSettings";
 import { Navbar } from "./Navbar";
+import Image from "next/image";
 
 const Navigation = () => {
     const search = useSearch();
@@ -139,7 +140,7 @@ const Navigation = () => {
             <aside
                 ref={sidebarRef}
                 className={cn(
-                    "group/sidebar relative z-[300] flex h-full w-60 flex-col overflow-y-auto bg-secondary",
+                    "group/sidebar relative z-[300] flex h-full w-60 flex-col bg-secondary overflow-hidden",
                     isResetting && "transition-all duration-300 ease-in-out",
                     isMobile && "w-0",
                 )}
@@ -154,27 +155,64 @@ const Navigation = () => {
                 >
                     <ChevronsLeft className="h-6 w-6" />
                 </div>
-                <div>
-                    <UserItem />
-                    <Item label="Buscar" icon={Search} isSearch onClick={search.onOpen} />
-                    <Item label="Configuración" icon={Settings} onClick={settings.onOpen} />
-                    <Item onClick={handleCreate} label="Nueva asinatura" icon={PlusCircle} />
+                
+                {/* Contenido principal del sidebar con scroll interno */}
+                <div className="flex-1 flex flex-col min-h-0">
+                    <div className="overflow-y-auto flex-1">
+                        <div>
+                            <UserItem />
+                            <Item label="Buscar" icon={Search} isSearch onClick={search.onOpen} />
+                            <Item label="Configuración" icon={Settings} onClick={settings.onOpen} />
+                            <Item onClick={handleCreate} label="Nueva asignatura" icon={PlusCircle} />
+                        </div>
+                        <div className="mt-4">
+                            <DocumentList />
+                            <Item onClick={handleCreate} icon={Plus} label="Agregar una asignatura" />
+                            <Popover>
+                                <PopoverTrigger className="mt-4 w-full">
+                                    <Item label="Papelera" icon={Trash} />
+                                </PopoverTrigger>
+                                <PopoverContent
+                                    side={isMobile ? "bottom" : "right"}
+                                    className="w-72 p-0"
+                                >
+                                    <TrashBox />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
+                    </div>
+
+                    {/* Logo y nombre de la app en la parte inferior */}
+                    <div className="border-t bg-background/50 p-4 flex-shrink-0">
+                        <div className="flex items-center gap-3 min-w-0">
+                            <div className="h-10 w-10 flex-shrink-0">
+                                <Image
+                                    src="/logo.svg"
+                                    alt="Zotion Logo"
+                                    width={40}
+                                    height={40}
+                                    className="dark:hidden"
+                                />
+                                <Image
+                                    src="/logo-dark.svg"
+                                    alt="Zotion Logo"
+                                    width={40}
+                                    height={40}
+                                    className="hidden dark:block"
+                                />
+                            </div>
+                            <div className="flex flex-col min-w-0 flex-1">
+                                <span className="text-sm font-semibold ul-text-gradient truncate">
+                                    Unilibre
+                                </span>
+                                <span className="text-xs text-muted-foreground truncate">
+                                    Notes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="mt-4">
-                    <DocumentList />
-                    <Item onClick={handleCreate} icon={Plus} label="Agregar una asignatura" />
-                    <Popover>
-                        <PopoverTrigger className="mt-4 w-full">
-                            <Item label="Papelera" icon={Trash} />
-                        </PopoverTrigger>
-                        <PopoverContent
-                            side={isMobile ? "bottom" : "right"}
-                            className="w-72 p-0"
-                        >
-                            <TrashBox />
-                        </PopoverContent>
-                    </Popover>
-                </div>
+
                 <div
                     onMouseDown={handleMouseDown}
                     onClick={resetWidth}
