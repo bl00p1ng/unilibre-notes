@@ -11,9 +11,9 @@ import { EdgeStoreProvider } from "@/lib/edgestore";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Zotion",
+  title: "Unilibre Notes",
   description:
-    "The seamless platform where creative and productive work happens.",
+    "Comparte tus apuntes de la Universidad Libre y accede a los apuntes de otros estudiantes.",
   icons: {
     icon: [
       {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/logo-dark.svg",
-        href: "/logo-dark.svg",
+        url: "/logo.svg",
+        href: "/logo.svg",
       },
     ],
   },
