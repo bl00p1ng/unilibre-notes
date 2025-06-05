@@ -18,13 +18,13 @@ export const Logo = () => {
         className="dark:hidden"
       />
       <Image
-        src="/logo-dark.svg"
+        src="/logo.svg"
         height="40"
         width="40"
         alt="logo"
         className="hidden dark:block"
       />
-      <p className={cn("font-semibold", font.className)}>Zotion</p>
+      <p className={cn("font-semibold", font.className)}>Unilibre Notes</p>
     </div>
   );
 };
