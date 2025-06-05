@@ -72,7 +72,7 @@ export const SearchCommand = () => {
                 placeholder={`Buscar apuntes...`} 
                 className="text-base h-12"
             />
-            <div className="p-4 border-b bg-gradient-to-r from-[hsl(var(--ul-red))]/5 to-[hsl(var(--ul-gold))]/5">
+            <div className="p-4 border-b">
                 <div className="flex items-center gap-3 mb-3">
                     <span className="text-sm font-medium text-[hsl(var(--ul-red))]">
                         Filtrar por puntuación:
@@ -81,7 +81,7 @@ export const SearchCommand = () => {
                         variant="outline"
                         size="sm"
                         onClick={clearFilters}
-                        className="h-8 px-3 text-xs hover:border-[hsl(var(--ul-red))] hover:text-[hsl(var(--ul-red))]"
+                        className="h-8 px-3 text-xs hover:border-[hsl(var(--ul-red))]"
                     >
                         Todos
                     </Button>
@@ -96,8 +96,8 @@ export const SearchCommand = () => {
                             className={cn(
                                 "h-10 px-3 min-w-[80px] flex items-center gap-2 transition-all",
                                 selectedRating === rating 
-                                    ? "ul-gradient text-white hover:opacity-90" 
-                                    : "hover:border-[hsl(var(--ul-gold))] hover:text-[hsl(var(--ul-gold))]"
+                                    ? "text-white hover:opacity-90" 
+                                    : "hover:text-[hsl(var(--ul-black))]"
                             )}
                         >
                             <StarRating value={rating} readonly size="sm" />
@@ -120,7 +120,7 @@ export const SearchCommand = () => {
                             value={document._id}
                             title={document.title}
                             onSelect={onSelect}
-                            className="p-3 rounded-lg mb-1 cursor-pointer hover:bg-accent"
+                            className="p-3 rounded-lg mb-1 cursor-pointer"
                         >
                             <div className="flex items-center justify-between w-full">
                                 <div className="flex items-center gap-3">
