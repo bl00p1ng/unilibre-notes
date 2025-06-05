@@ -18,6 +18,7 @@ import { useSearch } from "@/hooks/useSearch";
 import { api } from "@/convex/_generated/api";
 import { StarRating } from "./star-rating";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 export const SearchCommand = () => {
     const { user } = useUser();
@@ -71,16 +72,16 @@ export const SearchCommand = () => {
                 placeholder={`Buscar apuntes...`} 
                 className="text-base h-12"
             />
-            <div className="p-4 border-b bg-muted/30">
+            <div className="p-4 border-b bg-gradient-to-r from-[hsl(var(--ul-red))]/5 to-[hsl(var(--ul-gold))]/5">
                 <div className="flex items-center gap-3 mb-3">
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span className="text-sm font-medium text-[hsl(var(--ul-red))]">
                         Filtrar por puntuación:
                     </span>
                     <Button
                         variant="outline"
                         size="sm"
                         onClick={clearFilters}
-                        className="h-8 px-3 text-xs"
+                        className="h-8 px-3 text-xs hover:border-[hsl(var(--ul-red))] hover:text-[hsl(var(--ul-red))]"
                     >
                         Todos
                     </Button>
@@ -92,7 +93,12 @@ export const SearchCommand = () => {
                             variant={selectedRating === rating ? "default" : "outline"}
                             size="sm"
                             onClick={() => handleRatingFilter(rating)}
-                            className="h-10 px-3 min-w-[80px] flex items-center gap-2"
+                            className={cn(
+                                "h-10 px-3 min-w-[80px] flex items-center gap-2 transition-all",
+                                selectedRating === rating 
+                                    ? "ul-gradient text-white hover:opacity-90" 
+                                    : "hover:border-[hsl(var(--ul-gold))] hover:text-[hsl(var(--ul-gold))]"
+                            )}
                         >
                             <StarRating value={rating} readonly size="sm" />
                             <span className="text-xs">({rating}/5)</span>

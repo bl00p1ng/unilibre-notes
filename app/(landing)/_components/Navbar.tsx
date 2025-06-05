@@ -11,44 +11,46 @@ import { Spinner } from "@/components/spinner";
 import Link from "next/link";
 
 export const Navbar = () => {
-  const { isAuthenticated, isLoading } = useConvexAuth();
-  const scrolled = useScrollTop();
+    const { isAuthenticated, isLoading } = useConvexAuth();
+    const scrolled = useScrollTop();
 
-  return (
-    <nav
-      className={cn(
-        "sticky inset-x-0 top-0 z-50 mx-auto flex w-full items-center bg-background p-6 dark:bg-[#1F1F1F]",
-        scrolled && "border-b shadow-sm",
-      )}
-    >
-      <Logo />
-      <div className="flex w-full items-center justify-end md:ml-auto">
-        <div className="flex items-center gap-x-2">
-          {isLoading && <Spinner />}
-          {!isLoading && !isAuthenticated && (
-            <>
-              <SignInButton mode="modal">
-                <Button variant="ghost" size="sm">
-                  Iniciar sesión
-                </Button>
-              </SignInButton>
-              <SignInButton mode="modal">
-                <Button size="sm">Registrarse</Button>
-              </SignInButton>
-            </>
-          )}
+    return (
+        <nav
+            className={cn(
+                "sticky inset-x-0 top-0 z-50 mx-auto flex w-full items-center bg-background p-6 dark:bg-[#1F1F1F]",
+                scrolled && "border-b shadow-sm ul-shadow-red",
+            )}
+        >
+            <Logo />
+            <div className="flex w-full items-center justify-end md:ml-auto">
+                <div className="flex items-center gap-x-2">
+                    {isLoading && <Spinner />}
+                    {!isLoading && !isAuthenticated && (
+                        <>
+                            <SignInButton mode="modal">
+                                <Button variant="ghost" size="sm" className="hover:text-[hsl(var(--ul-red))]">
+                                    Iniciar Sesión
+                                </Button>
+                            </SignInButton>
+                            <SignInButton mode="modal">
+                                <Button size="sm">
+                                    Registrarse
+                                </Button>
+                            </SignInButton>
+                        </>
+                    )}
 
-          {isAuthenticated && !isLoading && (
-            <>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/documents"> Ingresar </Link>
-              </Button>
-              <UserButton afterSignOutUrl="/" />
-            </>
-          )}
-          <ModeToggle />
-        </div>
-      </div>
-    </nav>
-  );
+                    {isAuthenticated && !isLoading && (
+                        <>
+                            <Button variant="ghost" size="sm" asChild className="hover:text-[hsl(var(--ul-red))]">
+                                <Link href="/documents"> Entrar a Unilibre Notes </Link>
+                            </Button>
+                            <UserButton afterSignOutUrl="/" />
+                        </>
+                    )}
+                    <ModeToggle />
+                </div>
+            </div>
+        </nav>
+    );
 };

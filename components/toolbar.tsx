@@ -126,7 +126,7 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
             {/* Sección de puntuación */}
             {!preview && (
                 <div className="flex items-center gap-x-2 py-2 group-hover:opacity-100 md:opacity-0">
-                    <span className="text-sm text-muted-foreground">Puntuación:</span>
+                    <span className="text-sm font-medium text-[hsl(var(--ul-red))]">Puntuación:</span>
                     <StarRating
                         value={initialData.rating || 0}
                         onChange={onRatingChange}
@@ -137,7 +137,7 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
             {/* Mostrar puntuación en modo preview */}
             {preview && initialData.rating && (
                 <div className="flex items-center gap-x-2 py-2">
-                    <span className="text-sm text-muted-foreground">Puntuación:</span>
+                    <span className="text-sm font-medium text-[hsl(var(--ul-red))]">Puntuación:</span>
                     <StarRating
                         value={initialData.rating}
                         readonly

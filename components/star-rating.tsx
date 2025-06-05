@@ -66,8 +66,8 @@ export const StarRating = ({
                                 sizeClasses[size],
                                 "transition-colors",
                                 isFilled 
-                                    ? "fill-yellow-400 text-yellow-400" 
-                                    : "text-gray-300 hover:text-yellow-400"
+                                    ? "fill-[hsl(var(--ul-gold))] text-[hsl(var(--ul-gold))]" 
+                                    : "text-gray-300 hover:text-[hsl(var(--ul-gold))]"
                             )}
                         />
                     </button>
