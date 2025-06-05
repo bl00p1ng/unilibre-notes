@@ -13,12 +13,12 @@ export const Heading = () => {
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl font-bold sm:text-5xl md:text-5xl">
-        Your Ideas💡, Documents📕, & Plans🚀. Welcome to{" "}
-        <span className="underline">Zotion</span>
+        Tus apuntes 📕 en un solo lugar. Bienvenido a {" "}
+        <span className="underline">Unilibre Notes</span>
       </h1>
       <h2 className="text-base font-medium sm:text-xl">
-        Zotion is the connected workspace where <br /> better, faster work
-        happens.
+        Unilibre Notes es un espacio para que puedas tomar notas, organizar tus ideas y
+        compartir tus conocimientos de manera sencilla y efectiva.
       </h2>
       {isLoading && (
         <div className="flex w-full items-center justify-center">
@@ -28,7 +28,7 @@ export const Heading = () => {
       {isAuthenticated && !isLoading && (
         <Button asChild>
           <Link href="/documents">
-            Enter Zotion
+            Acceder
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
@@ -36,7 +36,7 @@ export const Heading = () => {
       {!isAuthenticated && !isLoading && (
         <SignInButton mode="modal">
           <Button>
-            Get Zotion free
+            Registrarse
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </SignInButton>
