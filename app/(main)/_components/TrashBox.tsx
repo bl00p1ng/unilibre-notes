@@ -76,8 +76,8 @@ export const TrashBox = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="h-7 bg-secondary px-2 focus-visible:ring-transparent"
-          placeholder="Filter by page title..."
-          aria-label="Filter by page title"
+          placeholder="Buscar por nombre..."
+          aria-label="Buscar por nombre"
         />
       </div>
       <div className="mt-2 px-1 pb-1">
