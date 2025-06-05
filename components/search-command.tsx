@@ -56,7 +56,7 @@ export const SearchCommand = () => {
     <CommandDialog open={isOpen} onOpenChange={onClose}>
       <CommandInput placeholder={`Search ${user?.fullName}'s Zotion..`} />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandEmpty>No se encontraron resultados.</CommandEmpty>
         <CommandGroup heading="Documents">
           {documents?.map((document) => (
             <CommandItem
