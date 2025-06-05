@@ -59,7 +59,7 @@ export const CoverImageModal = () => {
       </DialogTitle>
       <DialogContent>
         <DialogHeader>
-          <h2 className="text-center text-lg font-semibold">Cover Image</h2>
+          <h2 className="text-center text-lg font-semibold">Portada</h2>
         </DialogHeader>
         <SingleImageDropzone
           className="w-full outline-none"
