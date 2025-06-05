@@ -67,58 +67,79 @@ export const SearchCommand = () => {
 
     return (
         <CommandDialog open={isOpen} onOpenChange={onClose}>
-            <CommandInput placeholder={`Buscar apuntes...`} />
-            <div className="p-2 border-b">
-                <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-muted-foreground">Filtrar por puntuación:</span>
+            <CommandInput 
+                placeholder={`Buscar apuntes...`} 
+                className="text-base h-12"
+            />
+            <div className="p-4 border-b bg-muted/30">
+                <div className="flex items-center gap-3 mb-3">
+                    <span className="text-sm font-medium text-muted-foreground">
+                        Filtrar por puntuación:
+                    </span>
                     <Button
                         variant="outline"
                         size="sm"
                         onClick={clearFilters}
-                        className="h-6 px-2 text-xs"
+                        className="h-8 px-3 text-xs"
                     >
                         Todos
                     </Button>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2 flex-wrap">
                     {[1, 2, 3, 4, 5].map((rating) => (
                         <Button
                             key={rating}
                             variant={selectedRating === rating ? "default" : "outline"}
                             size="sm"
                             onClick={() => handleRatingFilter(rating)}
-                            className="h-8 px-2"
+                            className="h-10 px-3 min-w-[80px] flex items-center gap-2"
                         >
                             <StarRating value={rating} readonly size="sm" />
+                            <span className="text-xs">({rating}/5)</span>
                         </Button>
                     ))}
                 </div>
             </div>
-            <CommandList>
-                <CommandEmpty>No se encontraron resultados.</CommandEmpty>
-                <CommandGroup heading="Asignaturas">
+            <CommandList className="max-h-96">
+                <CommandEmpty className="py-8 text-center">
+                    <div className="text-muted-foreground">
+                        <File className="mx-auto h-8 w-8 mb-2 opacity-50" />
+                        <p>No se encontraron resultados.</p>
+                    </div>
+                </CommandEmpty>
+                <CommandGroup heading="Asignaturas" className="px-2">
                     {documents?.map((document) => (
                         <CommandItem
                             key={document._id}
                             value={document._id}
                             title={document.title}
                             onSelect={onSelect}
+                            className="p-3 rounded-lg mb-1 cursor-pointer hover:bg-accent"
                         >
                             <div className="flex items-center justify-between w-full">
-                                <div className="flex items-center">
+                                <div className="flex items-center gap-3">
                                     {document.icon ? (
-                                        <p className="mr-2 text-[1.125rem]">{document.icon}</p>
+                                        <div className="flex-shrink-0 text-xl">
+                                            {document.icon}
+                                        </div>
                                     ) : (
-                                        <File className="mr-2 h-4 w-4" />
+                                        <File className="flex-shrink-0 h-5 w-5 text-muted-foreground" />
                                     )}
-                                    <span>{document.title}</span>
+                                    <span className="font-medium text-base truncate">
+                                        {document.title}
+                                    </span>
                                 </div>
                                 {document.rating && (
-                                    <StarRating 
-                                        value={document.rating} 
-                                        readonly 
-                                        size="sm" 
-                                    />
+                                    <div className="flex items-center gap-2 flex-shrink-0">
+                                        <StarRating 
+                                            value={document.rating} 
+                                            readonly 
+                                            size="sm" 
+                                        />
+                                        <span className="text-xs text-muted-foreground">
+                                            ({document.rating}/5)
+                                        </span>
+                                    </div>
                                 )}
                             </div>
                         </CommandItem>
